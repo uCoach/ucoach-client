@@ -82,6 +82,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (2.16.0)
+    purecss-rails (0.6.0)
+      railties (>= 3.2.6, < 5)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -159,6 +161,7 @@ DEPENDENCIES
   jquery-rails
   pry-rails
   puma
+  purecss-rails
   quiet_assets
   rails (= 4.2.1)
   sass-rails (~> 5.0)
