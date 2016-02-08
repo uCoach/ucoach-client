@@ -1,7 +1,3 @@
-#uCoach Client
-
-##Goals
-
 ##Project Structure
 The basic structure of the Ucoach Client is according to the given diagram
 ![image](http://i.imgur.com/zb82hwq.png)
