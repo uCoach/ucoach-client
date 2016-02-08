@@ -10,8 +10,41 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
  *= require purecss
  *= require side-menu
+ *= require_self
  *= require_tree .
  */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #DADADA;
+  line-height: 1.7em;
+  color: #000000;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  color: #FFFFFF;
+}
+
+.button-primary {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-primary {
+  background: #ff505b;
+}

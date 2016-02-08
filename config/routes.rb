@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   root 'home#login'
 
   get 'login' => 'home#login', as: :login
-  post 'do_login' => 'home#do_login', as: :do_login
-  get 'register' => 'home#register'
+  post 'login' => 'home#do_login', as: :do_login
+  get 'register' => 'home#register', as: :register
+  post 'register' => 'home#do_register', as: :do_register
   get 'my_profile' => 'profile#my_profile', as: :profile
   
   # Example of regular route:

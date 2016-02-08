@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  layout 'login_layout'
   require 'rest-client'
 
   def index    
@@ -16,6 +17,18 @@ class HomeController < ApplicationController
       redirect_to profile_path
     else
       render :login
+    end
+  end
+
+  def register
+  end
+
+  def do_register
+    if true
+      session[:auth_token] = "my_token_09497d46978bf6f32265fefb5cc52264"
+      redirect_to profile_path
+    else
+      render :register
     end
   end
 end

@@ -1,15 +1,6 @@
-<form class="pure-form pure-form-aligned">
-  <fieldset>
-    <div class="pure-control-group">
-      <input id="email" type="email" placeholder="Email">
-    </div>
-
-    <div class="pure-control-group">
-      <input id="password" type="password" placeholder="Password">
-    </div>
-
-    <div class="pure-controls">
-      <button type="submit" class="pure-button pure-button-primary">Login</button>
-    </div>
-  </fieldset>
-</form>
+<div class="login-form-container">
+  <%= form_tag do_login_path, class: "pure-form pure-form-aligned" do %>
+    <%= render 'shared/user_fields' %>
+    <button type="submit" class="pure-button button-primary" style="width:100%;">Register</button>
+  <% end %>
+</div>
