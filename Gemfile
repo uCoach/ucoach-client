@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 
+gem 'rest-client', '~> 1.8'
+
 gem 'purecss-rails'
 
 group :development, :test do
