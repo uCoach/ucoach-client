@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require side-menu
 //= require_tree .

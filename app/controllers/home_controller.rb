@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   require 'rest-client'
+
   def index    
   end
 
@@ -7,8 +8,14 @@ class HomeController < ApplicationController
   end
 
   def do_login
-    response = RestClient.get 'http://127.0.1.1:4000/persons/1', { accept: :json }
-    @person = JSON.parse(response.body, object_class: Struct)
-    render :login
+    # response = RestClient.post 'http://pcs.herokuapp.com/login', 
+    #                             { email: params[:email], password: password[:password] }, 
+    #                             { accept: :json }
+    if true
+      session[:auth_token] = "my_token_09497d46978bf6f32265fefb5cc52264"
+      redirect_to profile_path
+    else
+      render :login
+    end
   end
 end

@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   get 'login' => 'home#login', as: :login
   post 'do_login' => 'home#do_login', as: :do_login
-
   get 'register' => 'home#register'
+  get 'my_profile' => 'profile#my_profile', as: :profile
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

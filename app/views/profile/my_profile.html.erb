@@ -1,0 +1,58 @@
+<div id="main">
+  <div class="header">
+    <h1>My profile</h1>
+    <!-- <h2>A subtitle for your page goes here</h2> -->
+  </div>
+
+  <div class="content">
+    <h2 class="content-subhead">Personal Info Section</h2>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">Firstname: </div>
+      <div class="pure-u-1-2"><%= @user.firstname %></div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-1-2">Lastname: </div>
+      <div class="pure-u-1-2"><%= @user.lastname %></div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">Birthdate: </div>
+      <div class="pure-u-1-2"><%= @user.birthdate %></div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">Email: </div>
+      <div class="pure-u-1-2"><%= @user.email %></div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">Twitter: </div>
+      <div class="pure-u-1-2"><%= @user.twitter_username %></div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-1-4">
+        <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2875/9069037713_1752f5daeb.jpg" alt="Peyto Lake">
+      </div>
+      <div class="pure-u-1-4">
+        <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2813/9069585985_80da8db54f.jpg" alt="Train">
+      </div>
+      <div class="pure-u-1-4">
+        <img class="pure-img-responsive" src="http://farm6.staticflickr.com/5456/9121446012_c1640e42d0.jpg" alt="T-Shirt Store">
+      </div>
+      <div class="pure-u-1-4">
+        <img class="pure-img-responsive" src="http://farm8.staticflickr.com/7357/9086701425_fda3024927.jpg" alt="Mountain">
+      </div>
+    </div>
+
+    <% if @user.measure.present? %>
+      <h2 class="content-subhead">Latest Health Measures</h2>
+
+      <% @user.measure.each do |m| %>
+        <div class="pure-g">
+          <div class="pure-u-1-1"><%= m.value %></div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
