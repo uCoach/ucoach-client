@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   layout 'login_layout'
-  require 'rest-client'
 
   def index    
   end
@@ -10,22 +9,14 @@ class HomeController < ApplicationController
   end
 
   def do_login
-    begin
-      response = RestClient.post 'https://ucoach-authentication-api.herokuapp.com/auth/login', 
-                                  { username: params[:email], password: params[:password] }.to_json, 
-                                  { accept: :json, content_type: :json }
+    response_body = UcoachService.new(:login, { username: params[:email], password: params[:password] }).do_post
 
-      response_body = JSON.parse(response.body, object_class: OpenStruct)
-
-      if response_body.token.present?
-        session[:auth_token] = response_body.token
-        return redirect_to profile_path
-      end
-
-    rescue => e
-      @login_error = true
+    if response_body.present? and response_body.token.present?
+      session[:auth_token] = response_body.token
+      return redirect_to profile_path
     end
 
+    @login_error = true
     render :login
   end
 
