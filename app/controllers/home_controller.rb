@@ -9,7 +9,10 @@ class HomeController < ApplicationController
   end
 
   def do_login
-    response_body = UcoachService.new(:login, { username: params[:email], password: params[:password] }).do_post
+    login_info = { username: params[:email], password: params[:password] }
+
+    response = UcoachService.new(session, :post, :login, login_info).do_request
+    response_body = JSON.parse(response.body, object_class: OpenStruct) if response.present?
 
     if response_body.present? and response_body.token.present?
       session[:auth_token] = response_body.token

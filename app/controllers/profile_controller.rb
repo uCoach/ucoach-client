@@ -2,14 +2,7 @@ class ProfileController < ApplicationController
   before_filter :verify_login
   
   def my_profile
-    begin
-      response = RestClient.get 'https://ucoach-business-logic-service.herokuapp.com/business/user', 
-                                { :Authorization => "default_authorization_key",
-                                  "User-Authorization" => session[:auth_token], 
-                                  accept: :json }
-                           
-      @user = JSON.parse(response.body, object_class: OpenStruct)
-    rescue => e
-    end
+    response = UcoachService.new(session, :get, :get_user, nil).do_request
+    @user = JSON.parse(response.body, object_class: OpenStruct) if response.present?
   end
 end
