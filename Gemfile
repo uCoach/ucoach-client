@@ -28,3 +28,7 @@ group :development do
   gem 'web-console', '~> 2.3'
 end
 
+group :production, :staging do
+  gem "rails_12factor"
+end
+
