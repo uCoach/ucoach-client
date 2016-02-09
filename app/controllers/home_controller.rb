@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   def do_login
     login_info = { username: params[:email], password: params[:password] }
 
-    response = UcoachService.new(session, :post, :login, login_info).do_request
+    response = UcoachService.new(session: session, method: :post, action: :login, data: login_info).do_request
     response_body = JSON.parse(response.body, object_class: OpenStruct) if response.present?
 
     if response_body.present? and response_body.token.present?
@@ -40,6 +40,7 @@ class HomeController < ApplicationController
   end
 
   def logout
+    UcoachService.new(session: session, method: :get, action: :logout).do_request
     session[:auth_token] = nil
     redirect_to root_path
   end

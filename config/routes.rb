@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'home#login'
 
   get 'login' => 'home#login', as: :login
-  get 'logout' => 'home#logout', as: :logout
+  delete 'logout' => 'home#logout', as: :logout
   post 'login' => 'home#do_login', as: :do_login
   get 'register' => 'home#register', as: :register
   post 'register' => 'home#do_register', as: :do_register

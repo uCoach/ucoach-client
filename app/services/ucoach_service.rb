@@ -5,23 +5,18 @@ class UcoachService
   AUTHENTICATION_API = "https://ucoach-authentication-api.herokuapp.com/auth"
   BUSINESS_LOGIC_SERVICE = "https://ucoach-business-logic-service.herokuapp.com/business"
 
-  ENDPOINT = {
-    login: "#{AUTHENTICATION_API}/login",
-    get_user: "#{BUSINESS_LOGIC_SERVICE}/user"
-  }
-
-  def initialize(session, method, action, data)
-    @session = session
-    @method = method
-    @action = action
-    @data = data
+  def initialize(params)
+    @session = params[:session]
+    @method = params[:method]
+    @action = params[:action]
+    @data = params[:data]
   end
 
   def do_request
     begin
       return RestClient::Request.execute(
                                   method: @method,
-                                  url: ENDPOINT[@action], 
+                                  url: endpoint[@action], 
                                   payload: @data.to_json, 
                                   headers: headers
                                 )
@@ -31,8 +26,16 @@ class UcoachService
     end
   end
 
+  def endpoint
+    {
+      login: "#{AUTHENTICATION_API}/login",
+      login: "#{AUTHENTICATION_API}/logout/#{@session[:auth_token]}",
+      get_user: "#{BUSINESS_LOGIC_SERVICE}/user"
+    }
+  end
+
   def business_logic_request?
-    ENDPOINT[@action].include? "business"
+    endpoint[@action].include? "business"
   end
 
   def headers
