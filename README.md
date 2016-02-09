@@ -43,7 +43,7 @@ As a user:
 
 The basic structure of the Ucoach Client is according to the given diagram
 
-![image](http://i.imgur.com/zb82hwq.png)
+![image](http://i.imgur.com/RLKMSeC.png)
 
 
 The project is composed by the current repository and six other repositories. On each repository information about its endpoits, resources and basic functionality are given. 
