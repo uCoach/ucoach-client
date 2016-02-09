@@ -7,8 +7,13 @@
 body {
   background-color: #DADADA;
   line-height: 1.7em;
-  color: #000000;
+  color: #333333;
   font-size: 16px;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: #ff505b;
+  text-decoration: none;
 }
 
 #content{
@@ -29,6 +34,12 @@ body {
     margin: 0 auto;
     width: 95%;
     max-width: 450px;
+
+    .register-link {
+      text-align: center;
+      font-size: 12;
+      padding-top: 5px;
+    }
   }
 }
 

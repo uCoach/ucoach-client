@@ -24,16 +24,23 @@ class HomeController < ApplicationController
   end
 
   def do_register
-    # response = RestClient.post 'http://127.0.1.1:4000/persons/', 
-    #                             { firstname: params[:firstname], lastname: params[:lastname] }.to_json, 
-    #                             { accept: :json, content_type: :json }
+    new_user = {
+      firstname: params[:firstname],
+      lastname: params[:lastname],
+      email: params[:email],
+      birthdate: params[:birthdate],
+      password: params[:password],
+      twitterUsername: params[:twitter_username].gsub("@", "")
+    }
 
-    if true
-      session[:auth_token] = "my_token_09497d46978bf6f32265fefb5cc52264"
-      redirect_to profile_path
-    else
-      render :register
-    end
+    # response = UcoachService.new(session: session, method: :post, action: :register, data: new_user).do_request
+    # response_body = JSON.parse(response.body, object_class: OpenStruct) if response.present?
+
+    # if response_body.present? and response_body.token.present?
+    #   session[:auth_token] = response_body.token
+    #   return redirect_to profile_path
+    # end
+    render :register
   end
 
   def logout

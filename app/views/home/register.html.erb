@@ -1,6 +1,8 @@
+<h1 class="ucoach">uCoach</h1>
 <div class="login-form-container">
   <%= form_tag do_register_path, class: "pure-form pure-form-aligned" do %>
     <%= render 'shared/user_fields' %>
     <button type="submit" class="pure-button button-primary" style="width:100%;">Register</button>
   <% end %>
+  <div class="register-link"> Already have an account? Login <%= link_to "here", login_path %> </div>
 </div>
