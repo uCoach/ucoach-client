@@ -3,7 +3,11 @@ class ProfileController < ApplicationController
   
   require 'rest-client'
   def my_profile
-    response = RestClient.get 'http://127.0.1.1:4000/persons/1', { accept: :json }
+    response = RestClient.get 'http://127.0.1.1:5701/business/user', 
+                              { :Authorization => "default_authorization_key",
+                                "User-Authorization" => session[:auth_token], 
+                                accept: :json }
+                         
     @user = JSON.parse(response.body, object_class: OpenStruct)
   end
 end
