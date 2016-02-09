@@ -14,4 +14,9 @@ class ProfileController < ApplicationController
     # end
     redirect_to profile_path
   end
+
+  def my_health_measures
+    response = UcoachService.new(session: session, method: :get, action: :get_health_measures, url_params: params).do_request
+    @health_measures = JSON.parse(response.body, object_class: OpenStruct) if response.present?
+  end
 end

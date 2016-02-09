@@ -11,6 +11,7 @@ class UcoachService
     @method = params[:method]
     @action = params[:action]
     @data = params[:data]
+    @url_params = params[:url_params] || {}
   end
 
   def do_request
@@ -33,7 +34,8 @@ class UcoachService
       logout: "#{AUTHENTICATION_API}/logout/#{@session[:auth_token]}",
       get_user: "#{BUSINESS_LOGIC_SERVICE}/user",
       google_auth: "#{BUSINESS_LOGIC_SERVICE}/user/google/authorization",
-      register: "#{PROCESS_CENTRIC_SERVICE}/"
+      register: "#{PROCESS_CENTRIC_SERVICE}/",
+      get_health_measures: "#{BUSINESS_LOGIC_SERVICE}/user/measurelist/#{ @url_params[:hm_type] || 1 }",
     }
   end
 

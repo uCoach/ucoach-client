@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'register' => 'home#do_register', as: :do_register
 
   get 'my_profile' => 'profile#my_profile', as: :profile
+  get 'my_health_measures' => 'profile#my_health_measures', as: :health_measures
   get 'google_auth' => 'profile#google_authorization', as: :google_auth
   
   # Example of regular route:

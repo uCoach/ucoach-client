@@ -1,0 +1,21 @@
+<div id="main">
+  <div class="header">
+    <h1>My profile</h1>
+    <!-- <h2>A subtitle for your page goes here</h2> -->
+  </div>
+
+  <div class="content">
+    <div class="hm-filter"> 
+      <%= form_tag health_measures_path, method: :get do %>
+        View my recorded: <%= select_tag "hm_type", options_for_select(hm_types_collection, selected: params[:hm_type]), { :onchange => "this.form.submit();" } %>
+      <% end %>  
+    </div>
+    <% @health_measures.each do |m| %>
+      <div class="pure-g">
+        <div class="pure-u-1-3"><%= m.createdDate %></div>
+        <div class="pure-u-1-3"><%= m.value %></div>
+        <div class="pure-u-1-3"><%= m.hmType.units %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
