@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   root 'home#login'
 
   get 'login' => 'home#login', as: :login
-  delete 'logout' => 'home#logout', as: :logout
   post 'login' => 'home#do_login', as: :do_login
+
+  delete 'logout' => 'home#logout', as: :logout
+  
   get 'register' => 'home#register', as: :register
   post 'register' => 'home#do_register', as: :do_register
+
   get 'my_profile' => 'profile#my_profile', as: :profile
+  get 'google_auth' => 'profile#google_authorization', as: :google_auth
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

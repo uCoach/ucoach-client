@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   layout 'login_layout'
 
-  def index    
-  end
-
   def login
     redirect_to profile_path if session[:auth_token].present?
   end

@@ -29,8 +29,9 @@ class UcoachService
   def endpoint
     {
       login: "#{AUTHENTICATION_API}/login",
-      login: "#{AUTHENTICATION_API}/logout/#{@session[:auth_token]}",
-      get_user: "#{BUSINESS_LOGIC_SERVICE}/user"
+      logout: "#{AUTHENTICATION_API}/logout/#{@session[:auth_token]}",
+      get_user: "#{BUSINESS_LOGIC_SERVICE}/user",
+      google_auth: "#{BUSINESS_LOGIC_SERVICE}/user/google/authorization"
     }
   end
 
