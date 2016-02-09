@@ -22,23 +22,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #DADADA;
-  line-height: 1.7em;
-  color: #000000;
-  font-size: 16px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-label {
-  color: #FFFFFF;
-}
-
 .button-primary {
   color: white;
   border-radius: 4px;
@@ -47,4 +30,10 @@ label {
 
 .button-primary {
   background: #ff505b;
+}
+
+.form-error{
+  color: #b30000;
+  text-align: center;
+  padding: 16px;
 }

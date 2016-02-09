@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UcoachClient</title>
+  <title>Ucoach</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield %>
+  <div id="content">
+    <%= yield %>  
+  </div>
 
   <%= javascript_include_tag 'application' %>
 </body>

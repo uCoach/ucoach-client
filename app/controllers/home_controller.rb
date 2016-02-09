@@ -6,18 +6,27 @@ class HomeController < ApplicationController
   end
 
   def login
+    redirect_to profile_path if session[:auth_token].present?
   end
 
   def do_login
-    # response = RestClient.post 'http://pcs.herokuapp.com/login', 
-    #                             { email: params[:email], password: params[:password] }, 
-    #                             { accept: :json }
-    if true
-      session[:auth_token] = "my_token_09497d46978bf6f32265fefb5cc52264"
-      redirect_to profile_path
-    else
-      render :login
+    begin
+      response = RestClient.post 'https://ucoach-authentication-api.herokuapp.com/auth/login', 
+                                  { username: params[:email], password: params[:password] }.to_json, 
+                                  { accept: :json, content_type: :json }
+
+      response_body = JSON.parse(response.body, object_class: OpenStruct)
+
+      if response_body.token.present?
+        session[:auth_token] = response_body.token
+        return redirect_to profile_path
+      end
+
+    rescue => e
+      @login_error = true
     end
+
+    render :login
   end
 
   def register
