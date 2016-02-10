@@ -62,6 +62,13 @@ The project is composed by the current repository and six other repositories. On
  * [See Wiki][12]
 
 
+#ABOUT THE CLIENT
+
+This repository sotores the client interface of the project, it is developed in Ruby and comunicates with the Business Logic and Process Centric using REST. 
+One working instance of it is provided at Heroku: [http://ucoach-client.herokuapp.com/my_profile][16]
+
+
+
 [1]: https://github.com/uCoach/data-service
 [2]: https://github.com/uCoach/internal-data-service
 [3]: https://github.com/uCoach/business-logic-service
@@ -77,3 +84,4 @@ The project is composed by the current repository and six other repositories. On
 [13]: http://news.harvard.edu/gazette/1998/10.08/ExerciseCanRedu.html
 [14]: http://www.medicaldaily.com/more-americans-lived-sedentary-lifestyle-2014-number-physically-active-hits-lowest-6-330788 
 [15]: http://www.thestrengthandconditioningblog.com/2013/06/the-importance-of-having-fitness-goals.html
+[16]: http://ucoach-client.herokuapp.com/my_profile
