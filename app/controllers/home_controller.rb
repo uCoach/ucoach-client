@@ -16,7 +16,7 @@ class HomeController < ApplicationController
       return redirect_to profile_path
     end
 
-    @login_error = true
+    @error = true
     render :login
   end
 
@@ -33,13 +33,15 @@ class HomeController < ApplicationController
       twitterUsername: params[:twitter_username].gsub("@", "")
     }
 
-    # response = UcoachService.new(session: session, method: :post, action: :register, data: new_user).do_request
-    # response_body = JSON.parse(response.body, object_class: OpenStruct) if response.present?
+    response = UcoachService.new(session: session, method: :post, action: :register, data: new_user).do_request
+    response_body = JSON.parse(response.body, object_class: OpenStruct) if response.present?
 
-    # if response_body.present? and response_body.token.present?
-    #   session[:auth_token] = response_body.token
-    #   return redirect_to profile_path
-    # end
+    if response_body.present? and response_body.token.present?
+      session[:auth_token] = response_body.token
+      return redirect_to profile_path
+    end
+
+    @error = true
     render :register
   end
 

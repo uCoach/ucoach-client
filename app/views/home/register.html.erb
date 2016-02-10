@@ -1,6 +1,11 @@
 <h1 class="ucoach">uCoach</h1>
 <div class="login-form-container">
   <%= form_tag do_register_path, class: "pure-form pure-form-aligned" do %>
+    <% if @error %>
+      <div class="form-error">
+        We couldn't register you, check your information.
+      </div>
+    <% end %>
     <%= render 'shared/user_fields' %>
     <button type="submit" class="pure-button button-primary" style="width:100%;">Register</button>
   <% end %>

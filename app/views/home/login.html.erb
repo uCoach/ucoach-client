@@ -1,7 +1,7 @@
 <h1 class="ucoach">uCoach</h1>
 <div class="login-form-container">
   <%= form_tag do_login_path, class: "pure-form pure-form-aligned" do %>
-    <% if @login_error %>
+    <% if @error %>
       <div class="form-error">
         We couldn't log you in, check your information.
       </div>
