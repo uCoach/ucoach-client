@@ -5,6 +5,22 @@
   </div>
 
   <div class="content">
+    <div class="login-form-container">
+      <%= form_tag create_health_measure_path, class: "pure-form" do %>
+        <% if @error %>
+          <div class="form-error">
+            We couldn't register your health measure, check your information.
+          </div>
+        <% end %>
+        <fieldset style="text-align:center;">
+          <legend>Save a new health measure</legend>
+          <%= text_field_tag 'value', params[:value], placeholder: 'e.g. 80', required: true %>
+          <%= select_tag "hm_type_id", options_for_select(hm_types_collection, selected: ( params[:hm_type_id] || params[:hm_type])), required: true %>
+          <button type="submit" class="pure-button button-primary">Save</button>
+        </fieldset>
+      <% end %>
+    </div>
+
     <div class="hm-filter"> 
       <%= form_tag health_measures_path, method: :get do %>
         View my recorded: <%= select_tag "hm_type", options_for_select(hm_types_collection, selected: params[:hm_type]), { :onchange => "this.form.submit();" } %>

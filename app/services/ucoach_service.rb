@@ -38,6 +38,7 @@ class UcoachService
       google_auth: "#{BUSINESS_LOGIC_SERVICE}/user/google/authorization",
       register: "#{PROCESS_CENTRIC_SERVICE}/register",
       get_health_measures: "#{BUSINESS_LOGIC_SERVICE}/user/measurelist/#{ @url_params[:hm_type] || 1 }",
+      new_health_measure: "#{PROCESS_CENTRIC_SERVICE}/measure",
       get_goals: "#{BUSINESS_LOGIC_SERVICE}/user/goalslist",
     }
   end
