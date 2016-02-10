@@ -35,3 +35,10 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+  console.log("message: <%= @message %>");
+  <% if @message.present? %>
+    alert("<%= @message %>");
+  <% end %>
+</script>

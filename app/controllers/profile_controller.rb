@@ -20,6 +20,8 @@ class ProfileController < ApplicationController
   end
 
   def my_health_measures
+    @message = session[:message]
+    session[:message] = nil
     response = UcoachService.new(session: session, method: :get, action: :get_health_measures, url_params: params).do_request
     @health_measures = JSON.parse(response.body, object_class: OpenStruct) if response.present?
   end
@@ -33,9 +35,17 @@ class ProfileController < ApplicationController
     response = UcoachService.new(session: session, method: :post, action: :new_health_measure, data: new_health_measure).do_request
     
     # "{\"message\":\"Keep going! Almost there\",\"status\":200,\"achievedGoals\":[]}"
-
+    puts "response: " + response
+    
     if response.present?
-      return redirect_to health_measures_path(hm_type: params[:hm_type_id])
+      response_body = JSON.parse response, object_class: OpenStruct
+      session[:message] = response_body.message
+
+      if response_body.achievedGoals.empty?
+        return redirect_to health_measures_path(hm_type: params[:hm_type_id])
+      else
+        return redirect_to goals_path
+      end
     end
 
     @error = true
@@ -46,6 +56,8 @@ class ProfileController < ApplicationController
   end
 
   def my_goals
+    @message = session[:message]
+    session[:message] = nil
     response = UcoachService.new(session: session, method: :get, action: :get_goals, url_params: params).do_request
     @goals = JSON.parse(response.body, object_class: OpenStruct) if response.present?
   end
