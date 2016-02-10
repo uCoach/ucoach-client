@@ -5,10 +5,35 @@
   </div>
 
   <div class="content">
+    <div class="login-form-container">
+      <%= form_tag create_goal_path, class: "pure-form" do %>
+        <% if @error %>
+          <div class="form-error">
+            We couldn't save your goal, check your information.
+          </div>
+        <% end %>
+        <fieldset style="text-align:center;">
+          <legend>Set a new goal</legend>
+          Achieve
+          <%= select_tag "objective", options_for_select(objectives_collection, selected: params[:objective]), required: true %>
+          <%= text_field_tag "value", params[:value], placeholder: 'e.g. 80', required: true %>
+          <%= select_tag "hm_type_id", options_for_select(hm_units_collection, selected: params[:hm_type_id]), required: true %>
+        </fieldset>
+        <fieldset style="text-align:center;">
+          <label for="frequency">
+              <%= check_box_tag "frequency", "daily" %> daily 
+          </label>
+          &nbsp;&nbsp;&nbsp; or &nbsp;&nbsp;&nbsp; by 
+          <%= date_field_tag "due_date", params[:due_date] %>
+          <button type="submit" class="pure-button button-primary">Set</button>
+        </fieldset>
+      <% end %>
+    </div>
+
     <% @goals.each do |g| %>
       <div class="pure-g">
-        <div class="pure-u-1-2"><%= g.objective + " " + g.value.to_s + " " + g.hmType.units %></div>
-        <div class="pure-u-1-2"><%= g.frequency || "by " + g.dueDate %></div>
+        <div class="pure-u-1-2"><%= g.objective + " " + g.value.to_s + " " + g.hmType.units.to_s %></div>
+        <div class="pure-u-1-2"><%= g.frequency || "by " + g.dueDate.to_s %></div>
       </div>
     <% end %>
   </div>

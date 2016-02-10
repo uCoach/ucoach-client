@@ -49,4 +49,27 @@ class ProfileController < ApplicationController
     response = UcoachService.new(session: session, method: :get, action: :get_goals, url_params: params).do_request
     @goals = JSON.parse(response.body, object_class: OpenStruct) if response.present?
   end
+
+  def create_goal
+    new_goal = {
+      measureType: params[:hm_type_id],
+      value: params[:value],
+      objective: params[:objective],
+      frequency: params[:frequency],
+      createdDate: Date.today.to_s,
+      dueDate: params[:due_date]
+    }
+    # new_goal[:dueDate] = params[:due_date] || Date.today.to_s
+    
+    response = UcoachService.new(session: session, method: :post, action: :new_goal, data: new_goal).do_request
+
+    if response.present?
+      return redirect_to goals_path
+    end
+
+    @error = true
+    response = UcoachService.new(session: session, method: :get, action: :get_goals, url_params: params).do_request
+    @goals = JSON.parse(response.body, object_class: OpenStruct) if response.present?
+    render :my_goals
+  end
 end

@@ -1,6 +1,6 @@
 <div id="main">
   <div class="header">
-    <h1>My profile</h1>
+    <h1>My Health Measures</h1>
     <!-- <h2>A subtitle for your page goes here</h2> -->
   </div>
 
@@ -15,7 +15,7 @@
         <fieldset style="text-align:center;">
           <legend>Save a new health measure</legend>
           <%= text_field_tag 'value', params[:value], placeholder: 'e.g. 80', required: true %>
-          <%= select_tag "hm_type_id", options_for_select(hm_types_collection, selected: ( params[:hm_type_id] || params[:hm_type])), required: true %>
+          <%= select_tag "hm_type_id", options_for_select(hm_units_collection, selected: ( params[:hm_type_id] || params[:hm_type])), required: true %>
           <button type="submit" class="pure-button button-primary">Save</button>
         </fieldset>
       <% end %>

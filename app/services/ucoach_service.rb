@@ -40,6 +40,7 @@ class UcoachService
       get_health_measures: "#{BUSINESS_LOGIC_SERVICE}/user/measurelist/#{ @url_params[:hm_type] || 1 }",
       new_health_measure: "#{PROCESS_CENTRIC_SERVICE}/measure",
       get_goals: "#{BUSINESS_LOGIC_SERVICE}/user/goalslist",
+      new_goal: "#{BUSINESS_LOGIC_SERVICE}/user/goal",
     }
   end
 

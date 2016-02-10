@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   get 'my_health_measures' => 'profile#my_health_measures', as: :health_measures
   get 'my_goals' => 'profile#my_goals', as: :goals
   get 'google_auth' => 'profile#google_authorization', as: :google_auth
-  
+
   post 'create_health_measure' => 'profile#create_health_measure', as: :create_health_measure
+  post 'create_goal' => 'profile#create_goal', as: :create_goal
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
