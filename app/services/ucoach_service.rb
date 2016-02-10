@@ -24,6 +24,7 @@ class UcoachService
                                   headers: headers
                                 )
     rescue => e
+      puts ">>>>>>> Request not OK <<<<<<<"
       puts e
       return nil
     end
