@@ -128,7 +128,7 @@ This styles the selected menu item `<li>`.
 */
 #menu .pure-menu-selected,
 #menu .pure-menu-heading {
-  background: #1f8dd6;
+  background: #ff505b;
 }
 /*
 This styles a link within a selected menu item `<li>`.
@@ -141,9 +141,11 @@ This styles a link within a selected menu item `<li>`.
 This styles the menu heading.
 */
 #menu .pure-menu-heading {
-  font-size: 110%;
+  font-family: 'Lato', sans-serif;
+  font-size: 150%;
   color: #fff;
   margin: 0;
+  text-transform: none;
 }
 
 /* -- Dynamic Button For Responsive Menu -------------------------------------*/
