@@ -30,6 +30,20 @@
       <div class="pure-u-1-2">Twitter: </div>
       <div class="pure-u-1-2"><%= @user.twitter_username %></div>
     </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1 google-connection">
+        <% if session[:google_connection] %>
+          <span>You are connected with </span>
+          <%= image_tag "https://developers.google.com/identity/images/btn_google_signin_light_normal_web_short.png", style: "vertical-align:middle;" %>
+        <% else %>
+          <span>Do you want to track your Google Fit steps? connect with </span>
+          <%= link_to google_auth_path do %>
+            <%= image_tag "https://developers.google.com/identity/images/btn_google_signin_light_normal_web_short.png", style: "vertical-align:middle;" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <div class="pure-g">
       <div class="pure-u-1-4">
         <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2875/9069037713_1752f5daeb.jpg" alt="Peyto Lake">
