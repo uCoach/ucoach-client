@@ -13,6 +13,20 @@ module ApplicationHelper
     ]     
   end
 
+  def hm_units_hash
+    {
+      '1' => 'kg',
+      '2' => 'cm',
+      '3' => 'steps',
+      '4' => 'heart rate',
+      '5' => 'calories',
+      '6' => 'km running',
+      '7' => 'km walking',
+      '8' => 'km cycling',
+      '9' => 'hrs sleeping'
+    }
+  end
+
   def hm_units_collection
     [
       ['kg', '1'],

@@ -36,7 +36,7 @@ class ProfileController < ApplicationController
     
     # "{\"message\":\"Keep going! Almost there\",\"status\":200,\"achievedGoals\":[]}"
     puts "response: " + response
-    
+
     if response.present?
       response_body = JSON.parse response, object_class: OpenStruct
       session[:message] = response_body.message
