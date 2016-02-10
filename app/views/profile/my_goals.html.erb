@@ -1,0 +1,15 @@
+<div id="main">
+  <div class="header">
+    <h1>My Goals</h1>
+    <!-- <h2>A subtitle for your page goes here</h2> -->
+  </div>
+
+  <div class="content">
+    <% @goals.each do |g| %>
+      <div class="pure-g">
+        <div class="pure-u-1-2"><%= g.objective + " " + g.value.to_s + " " + g.hmType.units %></div>
+        <div class="pure-u-1-2"><%= g.frequency || "by " + g.dueDate %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

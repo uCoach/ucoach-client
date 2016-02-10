@@ -23,4 +23,9 @@ class ProfileController < ApplicationController
     response = UcoachService.new(session: session, method: :get, action: :get_health_measures, url_params: params).do_request
     @health_measures = JSON.parse(response.body, object_class: OpenStruct) if response.present?
   end
+
+  def my_goals
+    response = UcoachService.new(session: session, method: :get, action: :get_goals, url_params: params).do_request
+    @goals = JSON.parse(response.body, object_class: OpenStruct) if response.present?
+  end
 end
